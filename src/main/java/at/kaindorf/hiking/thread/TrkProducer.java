@@ -7,9 +7,10 @@ import lombok.AllArgsConstructor;
 
 import java.io.File;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @AllArgsConstructor
-public class Producer implements Runnable {
+public class TrkProducer implements Runnable {
 
     private final String name;
     private final List<File> files;
@@ -18,11 +19,11 @@ public class Producer implements Runnable {
     @Override
     public void run() {
         files.forEach(file -> {
-            System.out.println(name + " " + file.getName());
+            //System.out.println(name + " " + file.getName());
             Trk trk = readTrk(file);
             try {
                 queue.enqueue(trk);
-                Thread.sleep(1000);
+                //Thread.sleep(1000);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
