@@ -31,7 +31,7 @@ public class TrkConsumer extends Subject implements Runnable {
                 //System.out.println(name + " " + result);
                 super.notifyObservers(result);
 
-                //Thread.sleep(1000);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 System.out.println("Thread " + name + " interrupted");
             }

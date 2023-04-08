@@ -23,7 +23,7 @@ public class TrkProducer implements Runnable {
             Trk trk = readTrk(file);
             try {
                 queue.enqueue(trk);
-                //Thread.sleep(1000);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
