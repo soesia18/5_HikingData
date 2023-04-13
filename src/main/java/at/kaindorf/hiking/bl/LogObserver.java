@@ -11,7 +11,6 @@ public class LogObserver implements Observer {
     private final File file;
 
     private ObjectMapper mapper = new ObjectMapper();
-    private JsonGenerator generator;
     private FileWriter fileWriter;
 
     public LogObserver(File file) {
@@ -19,7 +18,6 @@ public class LogObserver implements Observer {
         try {
             file.delete();
             fileWriter = new FileWriter(file, true);
-            this.generator = mapper.getFactory().createGenerator(new FileOutputStream(file, true));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -29,8 +27,8 @@ public class LogObserver implements Observer {
     public void update(Result result) {
         synchronized (file) {
             try {
-                mapper.writeValue(generator, result);
-                fileWriter.write(System.lineSeparator());
+                String resultJson = mapper.writeValueAsString(result);
+                fileWriter.write(resultJson + System.lineSeparator());
                 fileWriter.flush();
             } catch (IOException e) {
                 throw new RuntimeException(e);
