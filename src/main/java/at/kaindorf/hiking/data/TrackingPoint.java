@@ -16,8 +16,8 @@ public class TrackingPoint {
     @XmlAttribute(name = "lon")
     private double lon;
     @XmlElement(name = "ele")
-    private double ele;
+    private double elevation;
     @XmlElement(name = "time")
     @XmlJavaTypeAdapter(InstantAdapter.class)
-    private Instant time;
+    private Instant timestamp;
 }

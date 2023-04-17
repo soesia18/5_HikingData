@@ -10,7 +10,7 @@ public class CalculateElevation implements Strategy {
         float eleNeg = 0;
 
         for (int i = 0; i < trk.getTrackingPoints().size() - 1; i++) {
-            double elevation = (trk.getTrackingPoints().get(i).getEle() - trk.getTrackingPoints().get(i + 1).getEle());
+            double elevation = (trk.getTrackingPoints().get(i).getElevation() - trk.getTrackingPoints().get(i + 1).getElevation());
             if (elevation > 0) {
                 elePos += elevation;
             } else {
